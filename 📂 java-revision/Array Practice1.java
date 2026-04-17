@@ -10,6 +10,6 @@ public class Input {
       } */
     //using for each/ advanced for loop:
     for(int num = arr1){
-      System.out.print(num + " ");
+      System.out.print(num + " "); // here num represents the elemenst in the array...
   }
 }
