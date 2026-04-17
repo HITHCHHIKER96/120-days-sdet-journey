@@ -11,6 +11,9 @@ public class Input {
     //using for each/ advanced for loop:
     for(int num = arr1){
       System.out.print(num + " "); // here num represents the elemenst in the array...
+      // one more simple ways to print
+      System.out.println(Arrays.toString(arr1));
+      
   }
 }
   
