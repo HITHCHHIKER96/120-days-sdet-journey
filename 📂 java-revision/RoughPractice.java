@@ -8,7 +8,7 @@ public class Myclass {
         changeMe(arr);
         System.out.println(Arrays.toString(arr));
     }
-    static void changeMe{
+    static void changeMe(int[] arr){
         arr[0] = 3;
     }
 }
