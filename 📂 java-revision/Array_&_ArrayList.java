@@ -98,6 +98,7 @@ Bullet points:
 >> Elements are references stored contiguously in the array, but actual objects may be scattered in Heap.
 >> Uninitialized references are null by default.
 >> Primitives and objects have distinct memory handling in Java.
+	NOTE: All primitive types stored in Stack memory, but all the other object type like String or Array type these are all stored in Heap Momory.
 	
 Section 5: Taking Input and Printing Arrays Using Loops
 
