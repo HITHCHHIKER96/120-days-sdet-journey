@@ -10,5 +10,8 @@ public class Myclass {
     }
     static void changeMe(int[] arr){
         arr[0] = 3;
-    }
+    }   /// That is why arrays are mutable in Java as you can chnage it after is created.
+
+    // Now lets see 2D Arrays:
+    int[][] arr = new int[][]; // so here is [][] defined by 2d arrays and most important is 
 }
