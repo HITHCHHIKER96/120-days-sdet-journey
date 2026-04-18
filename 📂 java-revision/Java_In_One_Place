@@ -1,1 +1,826 @@
+❇️Chapter 1 · Foundations
+💢What is Java?
+Java is a programming language — a formal way to give instructions to a computer — created by James Gosling at Sun Microsystems in 1995. Its motto was "Write Once, Run Anywhere."
 
+💢The big idea
+Every computer understands only one language: binary (0s and 1s). Java lets you write human-readable instructions that get converted to something every computer can run — regardless of whether it's Windows, Mac, or Linux.
+
+💢Why Java became huge
+> It runs on billions of devices — phones, servers, ATMs, smart TVs
+> Android apps were originally written in Java
+> It powers the backend of Netflix, LinkedIn, Amazon
+> It is strongly typed — the language catches your mistakes early
+> It is object-oriented — everything in Java is modelled as real-world "things"
+Java is not JavaScript
+--> Java and JavaScript are completely different languages. JavaScript runs in browsers. Java runs in the JVM. The name similarity is purely marketing from 1995.
+Java versions (quick map)
+Era	     Version	        What changed
+Classic	 Java 1–4	        The original language
+Modern	 Java 5–8	        Generics, lambdas, streams
+Current	 Java 17–21(LTS)	Records, sealed classes, pattern matching
+The language you learn today is the same core Java that has been used since 1995. The new versions add features, they don't break what you learn here.
+
+
+❇️Chapter 2 · Foundations
+How Java works
+Before you write a single line, you need to understand the invisible machine that runs your code. This is the part most courses skip.
+
+💢The three pieces
+Thing	                          What it is	                                  Analogy
+JDK — Java Development Kit	    The full toolkit to write + compile Java	    A kitchen with all equipment
+JRE — Java Runtime Environment	Only what's needed to run Java programs	      The kitchen for eating, not cooking
+JVM — Java Virtual Machine	    The engine that actually executes your code	  The chef who reads and executes the recipe
+The journey of your code
+When you write Java, here is exactly what happens:
+
+Step 1: You write human-readable code
+  MyProgram.java
+
+Step 2: The compiler (javac) translates it to bytecode
+  javac MyProgram.java  →  MyProgram.class
+
+Step 3: The JVM reads the .class file and runs it on YOUR machine
+  java MyProgram  →  output appears
+💢What is bytecode?
+It's not binary, it's not Java. It's an in-between language that the JVM understands. This is why Java runs on every OS — the bytecode is the same, but each OS has its own JVM that translates it.
+
+Install the JDK 21 (from oracle.com or adoptium.net). It includes the compiler AND the JVM. You only ever need to install this one thing.
+Compiled vs Interpreted
+Java is both. It is compiled (your code → bytecode) and then interpreted/JIT-compiled by the JVM at runtime. This gives you the safety of compilation and the flexibility of interpretation.
+
+
+❇️Chapter 3 · Foundations
+Your first Java program
+Let's write actual code. Every piece of this matters — nothing is decoration.
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+
+}
+💢Breaking it down — line by line
+Code	                          What it means
+public class HelloWorld	        Every Java program lives inside a class. The filename MUST match the class name.
+public static void main	        This is the entry point. Java always starts running from here. This exact signature is mandatory.
+String[] args	                  Arguments you can pass when starting the program. Ignore it for now.
+System.out.println()	          Print something to the screen, then move to the next line.
+
+💢print vs println
+> System.out.print("Hello");    // no newline after
+> System.out.println("Hello");  // adds newline after
+> System.out.printf("Name: %s, Age: %d%n", "Raj", 25); // formatted
+Java is case-sensitive. main ≠ Main. string ≠ String. Every semicolon and brace matters.
+💢Comments
+// This is a single-line comment
+
+/* This is a
+   multi-line comment */
+
+/** This is a Javadoc comment — used for documentation */
+
+
+❇️Chapter 4 · Foundations
+Variables & data types
+A variable is a named box in memory that holds a value. Java is strongly typed — every box has a fixed type.
+
+💢Primitive types (the building blocks)
+Type	    What it holds	                Size	    Example
+int	      Whole numbers	                32-bit	  int age = 25;
+long	    Very large whole numbers	    64-bit	  long pop = 8000000000L;
+double	  Decimal numbers	              64-bit	  double pi = 3.14;
+float	    Smaller decimal	              32-bit	  float x = 3.14f;
+char	    A single character	          16-bit	  char c = 'A';
+boolean	  true or false	                1-bit	    boolean done = true;
+byte	    Tiny integers (-128 to 127)	  8-bit	    byte b = 100;
+short	    Small integers	              16-bit	  short s = 1000;
+
+💢Declaring and assigning
+// Declare then assign
+int age;
+age = 25;
+
+// Declare and assign in one line
+int score = 100;
+
+// final = constant (cannot be changed)
+final double PI = 3.14159;
+
+// var = type inferred (Java 10+)
+var name = "Rahul";  // Java knows this is a String
+
+💢Type casting
+int x = 10;
+double y = x;           // auto: int → double (widening)
+
+double a = 9.99;
+int b = (int) a;         // manual: double → int = 9 (narrowing, loses decimal)
+Use int for most whole numbers. Use double for decimals. Use boolean for true/false. That covers 90% of your needs.
+
+
+❇️Chapter 5 · Foundations
+💢Operators
+Operators let you do things with values — math, comparisons, logic.
+
+💢Arithmetic operators
+int a = 10, b = 3;
+
+a + b   // 13  — addition
+a - b   // 7   — subtraction
+a * b   // 30  — multiplication
+a / b   // 3   — division (integer! drops remainder)
+a % b   // 1   — modulus (remainder)
+
+double c = 10.0 / 3;  // 3.333... (use double for real division)
+💢Shorthand operators
+a += 5;   // same as: a = a + 5
+a -= 2;   // same as: a = a - 2
+a++;      // same as: a = a + 1
+a--;      // same as: a = a - 1
+💢Comparison operators (return boolean)
+a == b   // equal to
+a != b   // not equal
+a > b    // greater than
+a < b    // less than
+a >= b   // greater than or equal
+a <= b   // less than or equal
+💢Logical operators
+boolean x = true, y = false;
+
+x && y   // AND — true only if BOTH are true → false
+x || y   // OR  — true if EITHER is true  → true
+!x       // NOT — flips the value          → false
+💢Ternary operator (one-line if-else)
+int age = 20;
+String status = (age >= 18) ? "adult" : "minor";
+// condition ? value_if_true : value_if_false
+
+
+❇️Chapter 6 · Control
+💢Conditionals
+Conditionals let your program make decisions — do this, or do that.
+
+💢if / else if / else
+int marks = 85;
+
+if (marks >= 90) {
+    System.out.println("A grade");
+} else if (marks >= 75) {
+    System.out.println("B grade");
+} else if (marks >= 60) {
+    System.out.println("C grade");
+} else {
+    System.out.println("Fail");
+}
+💢switch statement
+int day = 3;
+
+switch (day) {
+    case 1: System.out.println("Monday");   break;
+    case 2: System.out.println("Tuesday");  break;
+    case 3: System.out.println("Wednesday"); break;
+    default: System.out.println("Other day");
+}
+💢Modern switch expression (Java 14+)
+String dayName = switch (day) {
+    case 1 -> "Monday";
+    case 2 -> "Tuesday";
+    case 3 -> "Wednesday";
+    default -> "Other";
+};
+Always add break in a traditional switch, otherwise it "falls through" to the next case. The new arrow syntax doesn't need break.
+
+
+❇️Chapter 7 · Control
+💢Loops
+Loops let you repeat code. Java has four types.
+
+for loop — when you know how many times
+for (int i = 0; i < 5; i++) {
+    System.out.println("Count: " + i);
+}
+// Prints: Count: 0, Count: 1, ... Count: 4
+💢while loop — when you don't know how many times
+int n = 1;
+while (n <= 5) {
+    System.out.println(n);
+    n++;
+}
+💢do-while loop — runs at least once
+int x = 10;
+do {
+    System.out.println(x);  // runs once even if condition is false
+    x++;
+} while (x < 5);  // condition is false but it still ran once
+💢for-each loop — for collections/arrays
+int[] numbers = {10, 20, 30, 40};
+
+for (int num : numbers) {
+    System.out.println(num);
+}
+💢break and continue
+for (int i = 0; i < 10; i++) {
+    if (i == 5) break;     // exits the loop entirely
+    if (i % 2 == 0) continue; // skips to next iteration
+    System.out.println(i);  // prints: 1, 3
+}
+
+
+❇️Chapter 8 · Structure
+💢Methods
+A method is a reusable block of code with a name. You define it once, call it many times. In other languages these are called "functions."
+
+💢Anatomy of a method
+//   access   return-type  name     parameters
+    public static int   add   (int a, int b) {
+        return a + b;
+    }
+💢Return types
+public static int square(int n) {
+    return n * n;  // must return an int
+}
+
+public static void greet(String name) {
+    System.out.println("Hello, " + name);
+    // void = returns nothing
+}
+
+💢// Calling methods:
+int result = square(5);  // result = 25
+greet("Arjun");            // prints: Hello, Arjun
+Method overloading — same name, different parameters
+public static int add(int a, int b) { return a + b; }
+public static double add(double a, double b) { return a + b; }
+public static int add(int a, int b, int c) { return a + b + c; }
+
+// Java figures out which one to call:
+add(1, 2);         // → first method
+add(1.5, 2.5);     // → second method
+add(1, 2, 3);      // → third method
+💢Varargs — variable number of arguments
+public static int sum(int... nums) {
+    int total = 0;
+    for (int n : nums) total += n;
+    return total;
+}
+sum(1, 2);          // = 3
+sum(1, 2, 3, 4);   // = 10
+
+
+❇️Chapter 9 · Structure
+💢Arrays
+An array is a fixed-size container that holds multiple values of the same type, in order.
+
+💢Creating arrays
+// Method 1: declare size, fill later
+int[] scores = new int[5];
+scores[0] = 90;
+scores[1] = 85;
+
+// Method 2: declare with values
+int[] marks = {90, 85, 78, 92, 88};
+
+// Access an element (index starts at 0!)
+System.out.println(marks[0]); // 90
+System.out.println(marks[4]); // 88 (last element)
+
+// Length of array
+System.out.println(marks.length); // 5
+Iterating an array
+for (int i = 0; i < marks.length; i++) {
+    System.out.println(marks[i]);
+}
+
+// Cleaner with for-each:
+for (int m : marks) {
+    System.out.println(m);
+}
+💢2D arrays (like a table/grid)
+int[][] grid = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+System.out.println(grid[1][2]); // row 1, col 2 = 6
+Arrays have a fixed size. Once created, you cannot add or remove elements. For a resizable list, use ArrayList (covered in Collections).
+
+
+❇️Chapter 10 · Structure
+💢Strings
+A String is a sequence of characters. It is NOT a primitive — it's an object. This matters.
+
+💢Creating strings
+String name = "Priya";           // string literal (preferred)
+String s2 = new String("Priya");  // object creation (avoid)
+Essential String methods
+String s = "Hello, World!";
+
+s.length()           // 13
+s.charAt(0)          // 'H'
+s.toUpperCase()      // "HELLO, WORLD!"
+s.toLowerCase()      // "hello, world!"
+s.trim()             // removes leading/trailing spaces
+s.contains("World") // true
+s.startsWith("Hello") // true
+s.replace("World", "Java") // "Hello, Java!"
+s.substring(7, 12)  // "World"
+s.split(", ")        // ["Hello", "World!"]
+s.indexOf("World")  // 7 (starting index)
+String comparison — CRITICAL
+String a = "hello";
+String b = "hello";
+
+a == b        // ⚠ compares MEMORY ADDRESSES (sometimes works, unreliable)
+a.equals(b)   // ✓ compares actual CONTENT — always use this
+a.equalsIgnoreCase(b) // case-insensitive comparison
+String is immutable
+Once a String is created, it cannot be changed. Every method returns a NEW string.
+
+💢StringBuilder — for building strings in loops
+StringBuilder sb = new StringBuilder();
+sb.append("Hello");
+sb.append(" World");
+String result = sb.toString();  // "Hello World"
+String formatting (Java 15+)
+String name = "Arjun";
+int age = 22;
+String msg = "My name is %s and I am %d years old".formatted(name, age);
+
+
+❇️Chapter 11 · OOP
+💢Classes & objects
+This is the heart of Java. A class is a blueprint. An object is a thing built from that blueprint. This models the real world.
+
+💢What's a class?
+Think of a class as a cookie cutter. The cutter defines the shape. The actual cookies are objects.
+
+public class Dog {
+    // Fields (properties / state)
+    String name;
+    String breed;
+    int age;
+
+    // Constructor (called when creating an object)
+    public Dog(String name, String breed, int age) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+    }
+
+    // Methods (behaviours / actions)
+    public void bark() {
+        System.out.println(name + " says: Woof!");
+    }
+
+    public void info() {
+        System.out.println(name + " is a " + breed + " aged " + age);
+    }
+}
+💢Creating objects
+// In your main method:
+Dog d1 = new Dog("Bruno", "Labrador", 3);
+Dog d2 = new Dog("Lola", "Poodle", 2);
+
+d1.bark();    // Bruno says: Woof!
+d2.info();    // Lola is a Poodle aged 2
+d1.name;      // Bruno
+The this keyword
+this refers to the current object. In the constructor, this.name is the field, name (without this) is the parameter.
+
+One class = one file. File name must match class name exactly, including capitalization.
+
+
+❇️Chapter 12 · OOP
+💢Encapsulation
+Encapsulation means hiding the internal details and only exposing what is necessary. It's the "what you need to know" principle.
+
+💢The problem without encapsulation
+// Without encapsulation — anyone can set any value
+Dog d = new Dog();
+d.age = -500;  // This is wrong! A dog can't be -500 years old.
+The solution: private fields + public getters/setters
+public class BankAccount {
+    private double balance;  // private = only accessible inside this class
+
+    public BankAccount(double initialBalance) {
+        if (initialBalance >= 0) {
+            this.balance = initialBalance;
+        }
+    }
+
+    // Getter — read the value
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setter — set the value with validation
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        } else {
+            System.out.println("Invalid deposit amount");
+        }
+    }
+}
+💢Access modifiers
+Modifier	        Who can access it
+private	Only      within the same class
+default (none)	  Within the same package
+protected	Same    package + subclasses
+public	          Everyone, everywhere
+Rule of thumb: make all fields private. Expose them via public getters/setters. This protects your data.
+
+
+❇️Chapter 13 · OOP
+💢Inheritance
+Inheritance lets one class inherit the fields and methods of another. It models "is-a" relationships — a Dog IS-A Animal.
+
+Parent class (superclass)
+public class Animal {
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void breathe() {
+        System.out.println(name + " is breathing");
+    }
+
+    public void makeSound() {
+        System.out.println("...");
+    }
+}
+Child class (subclass)
+public class Dog extends Animal {  // "extends" = inherit from
+    String breed;
+
+    public Dog(String name, String breed) {
+        super(name);  // calls Animal's constructor
+        this.breed = breed;
+    }
+
+    @Override
+    public void makeSound() {  // overrides Animal's makeSound
+        System.out.println(name + " says: Woof!");
+    }
+
+    public void fetch() {  // Dog-only method
+        System.out.println(name + " fetches the ball!");
+    }
+}
+
+Dog d = new Dog("Bruno", "Lab");
+d.breathe();    // inherited from Animal
+d.makeSound();  // Dog's overridden version
+d.fetch();      // Dog's own method
+Key keywords
+extends — creates the inheritance relationship
+super() — calls the parent class constructor
+super.method() — calls the parent class method
+@Override — annotation that says "I'm replacing a parent method"
+Java does NOT support multiple inheritance (a class can't extend two classes). But it can implement multiple interfaces (chapter 15).
+
+
+❇️Chapter 14 · OOP
+💢Polymorphism
+Polymorphism means "many forms." The same method name behaves differently depending on the object. One interface, many behaviours.
+
+💢Runtime polymorphism
+class Cat extends Animal {
+    public Cat(String name) { super(name); }
+
+    @Override
+    public void makeSound() {
+        System.out.println(name + " says: Meow!");
+    }
+}
+
+// The magic: use Animal reference, store Dog/Cat objects
+Animal a1 = new Dog("Bruno", "Lab");
+Animal a2 = new Cat("Kitty");
+
+a1.makeSound();  // Bruno says: Woof!  (Dog's version)
+a2.makeSound();  // Kitty says: Meow! (Cat's version)
+Why this is powerful
+// One loop, handles ALL animal types
+Animal[] zoo = {
+    new Dog("Rex", "German Shepherd"),
+    new Cat("Whiskers"),
+    new Dog("Buddy", "Golden")
+};
+
+for (Animal a : zoo) {
+    a.makeSound();  // each animal makes ITS OWN sound
+}
+instanceof — checking the actual type
+Animal a = new Dog("Rex", "GSD");
+
+if (a instanceof Dog) {
+    Dog d = (Dog) a;  // downcast to Dog
+    d.fetch();         // now you can use Dog-only methods
+}
+
+// Pattern matching (Java 16+) — cleaner:
+if (a instanceof Dog d) {
+    d.fetch();  // no need to cast manually
+}
+
+
+❇️Chapter 15 · OOP
+💢Abstraction & interfaces
+Abstraction means defining WHAT something does, without specifying HOW. Two tools: abstract classes and interfaces.
+
+💢Abstract class
+abstract class Shape {
+    abstract double area();   // no body — subclass MUST implement
+    abstract double perimeter();
+
+    public void describe() {  // can have normal methods too
+        System.out.println("Area: " + area());
+    }
+}
+
+class Circle extends Shape {
+    double r;
+    Circle(double r) { this.r = r; }
+
+    @Override double area() { return Math.PI * r * r; }
+    @Override double perimeter() { return 2 * Math.PI * r; }
+}
+💢Interface — a contract
+interface Flyable {
+    void fly();            // all methods are abstract by default
+    default void land() {  // default methods have a body
+        System.out.println("Landing...");
+    }
+}
+
+interface Swimmable {
+    void swim();
+}
+
+// A class CAN implement multiple interfaces
+class Duck extends Animal implements Flyable, Swimmable {
+    public Duck(String name) { super(name); }
+
+    @Override public void fly() { System.out.println("Duck flying"); }
+    @Override public void swim() { System.out.println("Duck swimming"); }
+    @Override public void makeSound() { System.out.println("Quack!"); }
+}
+                      Abstract class	            Interface
+Has constructors	    Yes	                        No
+Has fields	          Yes	                        Only static final
+Multiple inheritance	No (extends 1)	            Yes (implements many)
+Purpose	              Shared base behavior	      Define a contract/capability
+
+
+❇️Chapter 16 · Advanced
+💢Collections
+Arrays are fixed-size. The Collections Framework gives you dynamic, powerful data containers. These are the most-used classes in real Java code.
+
+ArrayList — a resizable array
+import java.util.ArrayList;
+
+ArrayList<String> names = new ArrayList<>();
+names.add("Rahul");
+names.add("Priya");
+names.add("Arjun");
+
+names.get(0);            // "Rahul"
+names.size();            // 3
+names.remove("Priya");  // removes by value
+names.remove(0);        // removes by index
+names.contains("Arjun"); // true
+
+for (String n : names) System.out.println(n);
+💢HashMap — key-value pairs
+import java.util.HashMap;
+
+HashMap<String, Integer> scores = new HashMap<>();
+scores.put("Rahul", 90);
+scores.put("Priya", 95);
+scores.put("Arjun", 88);
+
+scores.get("Priya");        // 95
+scores.containsKey("Raj"); // false
+scores.remove("Arjun");
+
+for (String key : scores.keySet()) {
+    System.out.println(key + " → " + scores.get(key));
+}
+💢HashSet — unique values only
+import java.util.HashSet;
+
+HashSet<String> cities = new HashSet<>();
+cities.add("Hyderabad");
+cities.add("Mumbai");
+cities.add("Hyderabad"); // duplicate — ignored!
+cities.size(); // 2 (not 3)
+💢Quick comparison
+Collection	    Ordered	  Duplicates	  Use for
+ArrayList	      Yes	      Yes	          List of items
+LinkedList	    Yes	      Yes	          Frequent insert/delete
+HashMap	        No	      No (keys)	    Key-value lookup
+HashSet	        No	      No	          Unique values
+TreeMap	        Sorted	  No (keys)	    Sorted key-value
+
+
+❇️Chapter 17 · Advanced
+💢Exception handling
+Exceptions are runtime errors. Exception handling lets your program deal with errors gracefully instead of crashing.
+
+💢What is an exception?
+int[] arr = {1, 2, 3};
+arr[10]; // ArrayIndexOutOfBoundsException — crashes the program!
+
+int x = 5 / 0; // ArithmeticException — divide by zero!
+💢try-catch-finally
+try {
+    int result = 10 / 0;      // this will throw an exception
+    System.out.println(result); // this line never runs
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage()); // "/ by zero"
+} catch (Exception e) {
+    System.out.println("Some other error: " + e.getMessage());
+} finally {
+    System.out.println("This ALWAYS runs, error or not");
+}
+💢Throwing your own exception
+public void setAge(int age) {
+    if (age < 0) {
+        throw new IllegalArgumentException("Age cannot be negative");
+    }
+    this.age = age;
+}
+💢Custom exceptions
+class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+
+// Usage:
+throw new InsufficientFundsException("Balance too low");
+💢Checked vs Unchecked
+Type	                        Must handle?	              Examples
+Checked	                      Yes (compile error if not)	IOException, SQLException
+Unchecked (RuntimeException)	No (optional)	              NullPointerException, ArrayIndexOutOfBoundsException
+
+
+❇️Chapter 18 · Advanced
+💢Generics
+Generics let you write classes and methods that work with ANY type, while keeping type safety. The <T> you see everywhere — this is it.
+
+💢The problem without generics
+// Without generics — you lose type safety
+ArrayList list = new ArrayList();
+list.add("hello");
+list.add(42);  // no error, but this is a mess
+String s = (String) list.get(1);  // ClassCastException at runtime!
+💢With generics
+ArrayList<String> list = new ArrayList<>();
+list.add("hello");
+list.add(42);  // COMPILE ERROR — caught immediately. 42 is not a String.
+String s = list.get(0);  // no cast needed
+💢Generic class
+public class Box<T> {  // T is a placeholder for any type
+    private T value;
+
+    public void set(T value) { this.value = value; }
+    public T get() { return value; }
+}
+
+Box<String> stringBox = new Box<>();
+stringBox.set("Hello");
+String s = stringBox.get();  // type-safe, no cast
+
+Box<Integer> intBox = new Box<>();
+intBox.set(100);
+int n = intBox.get();
+💢Generic method
+public static <T> void printArray(T[] arr) {
+    for (T item : arr) {
+        System.out.print(item + " ");
+    }
+}
+
+printArray(new String[]{"a", "b", "c"});
+printArray(new Integer[]{1, 2, 3});
+Naming convention: T = Type, E = Element, K = Key, V = Value, N = Number.
+
+
+❇️Chapter 19 · Advanced
+💢Lambdas & streams
+Java 8 introduced lambdas — a way to treat code as data. Streams let you process collections in a clean, pipeline style.
+
+💢Lambda expressions
+// Old way — anonymous class
+Runnable r = new Runnable() {
+    @Override
+    public void run() { System.out.println("Running"); }
+};
+
+// Lambda way — much shorter
+Runnable r = () -> System.out.println("Running");
+r.run();
+💢Lambda syntax
+// No params
+() -> System.out.println("Hello")
+
+// One param (can omit type)
+name -> System.out.println(name)
+
+// Multiple params + body
+(a, b) -> {
+    int sum = a + b;
+    return sum;
+}
+
+// Multiple params, single expression (no return keyword needed)
+(a, b) -> a + b
+💢Streams — processing collections
+import java.util.*;
+import java.util.stream.*;
+
+List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8);
+
+// Get sum of all even numbers, doubled
+int result = numbers.stream()
+    .filter(n -> n % 2 == 0)       // keep only evens: 2,4,6,8
+    .map(n -> n * 2)               // double each: 4,8,12,16
+    .reduce(0, Integer::sum);       // sum all: 40
+
+// Collect to a new list
+List<String> names = List.of("alice", "bob", "charlie");
+
+List<String> upper = names.stream()
+    .filter(n -> n.length() > 3)       // alice, charlie
+    .map(String::toUpperCase)            // ALICE, CHARLIE
+    .sorted()                            // ALICE, CHARLIE (already sorted)
+    .collect(Collectors.toList());
+💢Common stream operations
+Operation	      What it does
+filter()	      Keep elements matching a condition
+map()	          Transform each element
+sorted()	      Sort elements
+distinct()	    Remove duplicates
+limit(n)	      Take only first n elements
+forEach()	      Do something with each element
+count()	        Count elements
+collect()	      Gather into a collection
+
+❇️Chapter 20 · Advanced
+💢Multithreading
+A thread is a separate path of execution. Multithreading lets your program do multiple things at the same time.
+
+💢The Thread class
+class MyTask extends Thread {
+    private String taskName;
+
+    public MyTask(String name) { taskName = name; }
+
+    @Override
+    public void run() {  // code that runs in its own thread
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(taskName + ": step " + i);
+        }
+    }
+}
+
+MyTask t1 = new MyTask("Download");
+MyTask t2 = new MyTask("Upload");
+t1.start();  // starts new thread — don't call run() directly
+t2.start();  // runs concurrently with t1
+💢Runnable interface (preferred)
+Runnable task = () -> {
+    System.out.println("Task running on: " + Thread.currentThread().getName());
+};
+
+Thread t = new Thread(task);
+t.start();
+💢ExecutorService — the modern way
+import java.util.concurrent.*;
+
+ExecutorService pool = Executors.newFixedThreadPool(4); // 4 threads
+
+pool.submit(() -> System.out.println("Task 1"));
+pool.submit(() -> System.out.println("Task 2"));
+pool.submit(() -> System.out.println("Task 3"));
+
+pool.shutdown(); // wait for all tasks to finish
+💢synchronized — preventing data corruption
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;  // only one thread at a time can run this
+    }
+
+    public int getCount() { return count; }
+}
+You now know 100% of Java the language. From here, you can explore: Spring Framework (web), Android development, JDBC (databases), or JUnit (testing). You have the foundation for all of them.
+You've completed Java 0 → 100%
+20 chapters · Foundations, OOP, Collections, Generics, Lambdas, Streams, Multithreading
