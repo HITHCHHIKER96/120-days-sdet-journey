@@ -19,4 +19,11 @@ public class Myclass {
         {1, 2, 3}, // assume this ia an array of index 0,
         {2, 5, 7} // this is an array of index 2.
     }; // It is basically an arrays of arrays.
+    like if you want to access 5 from arr1[][] : arr[1][1] = 5 this is how you can access.
+    Note: At first i told that row is mandatory why? assume an array like this:
+    arr2[][] = {
+        {12, 14, 18},
+        {10, 11},
+        {9, 5, 3, 1}
+    }; // here row no is mandatory and should be fixed but coloumn cannot be as every row is an object of arr2.
 }
