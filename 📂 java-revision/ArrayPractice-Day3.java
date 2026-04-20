@@ -38,3 +38,36 @@ Explanation: The array ans is formed as follows:
       length: How many elements to copy.
     }
 }
+
+
+https://leetcode.com/problems/running-sum-of-1d-array/
+Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+Return the running sum of nums.
+
+Example 1:
+
+Input: nums = [1,2,3,4]
+Output: [1,3,6,10]
+Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+Example 2:
+
+Input: nums = [1,1,1,1,1]
+Output: [1,2,3,4,5]
+Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+
+public class Running{
+  public static void main(String[] args){
+    int[] nums1 = {2,3,4,5};
+    runningSum(nums1);
+  }
+  public int[] runningSum(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[n];
+        int curr = 0;
+        for(int i=0;i<n;i++){
+            curr += nums[i];
+            ans[i]=curr;
+        }
+        return ans;
+    }
+}
