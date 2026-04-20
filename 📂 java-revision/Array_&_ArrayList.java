@@ -152,6 +152,7 @@ Bullet points:
 >> Changes inside the function reflect in the original array.
 >> Arrays are mutable; strings are immutable.
 >> Supports efficient in-place algorithms.
+	
 Section 8: ArrayList – Dynamic Arrays in Java
 
 Java's ArrayList class offers a dynamic alternative to fixed-size arrays.
