@@ -28,5 +28,13 @@ public class Myclass {
     }; // here row no is mandatory and should be fixed but coloumn cannot be as every row is an object of arr2.
 
     // how to take input:
-    
+    int[][] arr = new int[3][];
+    System.out.println(arr.length); // this will print the length of the array cause row is the lenght of the array.
+
+    for(int row=0;row<arr.length;row++){
+        // for each col in every row:
+        for(int col=0;col<arr[row].length;col++){
+            arr[row][col] = .....;
+        }
+    }
 }
