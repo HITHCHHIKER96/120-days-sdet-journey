@@ -27,6 +27,14 @@ Explanation: The array ans is formed as follows:
         System.arraycopy(nums, 0, ans, n1, n1);
         System.out.println(Arrays.toString(ans));
 
-         return ans;
+         return ans; 
+      // How it works:
+      The Method Signature
+      System.arraycopy(source, srcPos, destination, destPos, length);
+      source: The array you are copying from.
+      srcPos: Where to start reading in the source array.
+      destination: The array you are copying into.
+      destPos: Where to start writing in the destination array.
+      length: How many elements to copy.
     }
 }
