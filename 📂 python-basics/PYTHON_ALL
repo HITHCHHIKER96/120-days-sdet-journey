@@ -317,6 +317,66 @@ print(text[::-1])   # nohtyP  (reversed!)
 
 ### 4.4 Common String Methods
 
+Case Transformation
+
+These methods adjust the capitalization of characters within a string. [1]
+capitalize(): Converts the first character to uppercase and the rest to lowercase.
+lower(): Converts all characters to lowercase.
+upper(): Converts all characters to uppercase.
+title(): Converts the first character of each word to uppercase.
+swapcase(): Swaps uppercase to lowercase and vice versa.
+asefold(): A stronger version of lower() used for case-insensitive comparisons (e.g., handles special characters like the German "ß"). [1, 2, 3, 4, 5, 6]
+
+Searching and Finding
+Methods for locating specific characters or substrings.
+find(sub[, start[, end]]): Returns the lowest index where the substring is found, or -1 if not found.
+rfind(sub[, start[, end]]): Returns the highest index (last occurrence) of the substring.
+index(sub[, start[, end]]): Like find(), but raises a ValueError if the substring isn't found.
+rindex(sub[, start[, end]]): Like rfind(), but raises a ValueError if the substring isn't found.
+count(sub[, start[, end]]): Returns the number of non-overlapping occurrences of a substring. [1, 2, 3]
+
+Splitting and Joining
+Essential for breaking strings into lists or merging items into a single string. [1, 2, 3]
+split(sep=None, maxsplit=-1): Splits a string into a list based on a delimiter (defaults to whitespace).
+rsplit(sep=None, maxsplit=-1): Splits a string from the right.
+join(iterable): Concatenates elements of an iterable (like a list) using the string as a separator.
+partition(sep): Splits the string at the first occurrence of sep and returns a 3-tuple.
+rpartition(sep): Splits the string at the last occurrence of sep and returns a 3-tuple.
+splitlines([keepends]): Splits the string at line breaks. [1, 2, 3, 4]
+
+Trimming and Padding
+strip([chars]): Removes leading and trailing characters (defaults to whitespace).
+lstrip([chars]): Removes leading characters.
+rstrip([chars]): Removes trailing characters.
+center(width[, fillchar]): Returns a centered string of a specified width.
+ljust(width[, fillchar]): Left-justifies the string.
+rjust(width[, fillchar]): Right-justifies the string.
+zfill(width): Pads the string with zeros on the left until it reaches the specified width. [1, 2, 3, 4, 5]
+
+Boolean Checks
+These return True or False based on string content. [1, 2, 3]
+startswith(prefix[, start[, end]]): Checks if the string starts with a specific value.
+endswith(suffix[, start[, end]]): Checks if the string ends with a specific value.
+isalnum(): True if all characters are alphanumeric.
+isalpha(): True if all characters are alphabetic.
+isdecimal() / isdigit() / isnumeric(): Check for various types of numeric characters.
+islower() / isupper(): Checks if characters are in a specific case.
+isspace(): True if the string consists only of whitespace.
+isprintable(): True if all characters are printable.
+isidentifier(): True if the string is a valid Python identifier. [1, 2, 3, 4]
+
+Formatting and Modification
+replace(old, new[, count]): Replaces occurrences of old with new.
+**format(*args, kwargs): Formats values into a template string.
+removeprefix(prefix): Removes a specific prefix if it exists (Python 3.9+).
+removesuffix(suffix): Removes a specific suffix if it exists (Python 3.9+).
+expandtabs(tabsize=8): Replaces tab characters with a specified number of spaces.
+encode(encoding='utf-8', errors='strict'): Returns an encoded version of the string as bytes.
+translate(table): Returns a copy of the string where each character is mapped through the given translation table.
+maketrans(x[, y[, z]]): Static method that creates a translation table for translate().
+
+
+
 | Method | Example & Result |
 |---|---|
 | `.upper()` | `'hello'.upper()` → `'HELLO'` |
