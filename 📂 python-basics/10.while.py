@@ -1,4 +1,4 @@
-# while loop = execute some code WHILE some condition remains true
+# while loop = execute some code WHILE some condition remains true and it is better when you know the condition will be infinte number of times
 
 food = input("Enter a food you like (q to quit): ")
 
